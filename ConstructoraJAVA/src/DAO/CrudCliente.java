@@ -2,6 +2,7 @@ package DAO;
 
 import Identidades.Cliente;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Nombre de la interfas CrudCliente
@@ -13,5 +14,6 @@ import java.sql.SQLException;
 public interface CrudCliente {
     
     public int agregarCliente(Cliente c) throws ClassNotFoundException, SQLException;
+    
     
 }
