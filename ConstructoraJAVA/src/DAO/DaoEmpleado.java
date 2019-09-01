@@ -30,7 +30,7 @@ public class DaoEmpleado extends Conexion implements CrudEmpleado{
             ps=super.con().prepareStatement("select u.usuario, u.correo, u.contraseña, u.avatar, "
                     + "e.idEmpleado, e.nombre, e.direccion,e.telefono, e.dui, "
                     + "e.fechaNacimiento, e.tipoEmpleado, e.pagoDia FROM empleado e "
-                    + "INNER JOIN usuario u ON e.idUsuario = u.idUsuario where e.estado=1");
+                    + "INNER JOIN usuario u ON e.idUsuario = u.idUsuario where e.estado=1"); 
             rs=ps.executeQuery();
             while(rs.next()){
                 em=new Empleado(rs.getString(1), rs.getString(2), rs.getString(3),

@@ -41,7 +41,6 @@ private  void llenar(){
         btnbuscar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -50,6 +49,7 @@ private  void llenar(){
         txtemail = new javax.swing.JTextField();
         txtavatar = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -132,11 +132,6 @@ private  void llenar(){
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono_login.png"))); // NOI18N
-        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton2.setBorderPainted(false);
-
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setText("Usuario");
 
@@ -147,6 +142,8 @@ private  void llenar(){
         jLabel12.setText("Email");
 
         jLabel14.setText("Avatar");
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono_login.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -166,16 +163,16 @@ private  void llenar(){
                             .addComponent(txtavatar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel9)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -460,15 +457,19 @@ private  void llenar(){
 
     private void tabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseClicked
        int f=tabla1.getSelectedRow();
-        txtid.setText(tabla1.getValueAt(f, 0).toString());
-        txtnombre.setText(tabla1.getValueAt(f, 1).toString());
-        txtdireccion.setText(tabla1.getValueAt(f, 2).toString());
-        txttelefono.setText(tabla1.getValueAt(f, 3).toString());
-        txtdui.setText(tabla1.getValueAt(f, 4).toString());
-        txtfnac.setText(tabla1.getValueAt(f, 5).toString());
-        txttipo.setText(tabla1.getValueAt(f, 6).toString());
-        txtsalario.setText(tabla1.getValueAt(f, 7).toString());
-        txtusuario.setText(tabla1.getValueAt(f, 8).toString());
+       txtusuario.setText(tabla1.getValueAt(f, 0).toString());
+       txtemail.setText(tabla1.getValueAt(f, 1).toString());
+       txtcontra.setText(tabla1.getValueAt(f, 2).toString());
+       txtavatar.setText(tabla1.getValueAt(f, 3).toString());
+        txtid.setText(tabla1.getValueAt(f, 4).toString());
+        txtnombre.setText(tabla1.getValueAt(f, 5).toString());
+        txtdireccion.setText(tabla1.getValueAt(f, 6).toString());
+        txttelefono.setText(tabla1.getValueAt(f, 7).toString());
+        txtdui.setText(tabla1.getValueAt(f, 8).toString());
+        txtfnac.setText(tabla1.getValueAt(f, 9).toString());
+        txttipo.setText(tabla1.getValueAt(f, 10).toString());
+        txtsalario.setText(tabla1.getValueAt(f, 11).toString());
+        txtusuario.setText(tabla1.getValueAt(f, 12).toString());
         
     }//GEN-LAST:event_tabla1MouseClicked
 
@@ -480,7 +481,6 @@ private  void llenar(){
     private javax.swing.JButton btnmodificar;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -493,6 +493,7 @@ private  void llenar(){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
