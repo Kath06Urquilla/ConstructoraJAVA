@@ -19,7 +19,7 @@ public class DaoCliente extends Conexion implements CrudCliente{
     ResultSet rs;           //para los resultados que recibe
     Cliente c;              //para crear clientes
     int res;
-    
+            
     //Para agregar Usuarios y clientes
     @Override
     public int agregarCliente(Cliente c) throws ClassNotFoundException, SQLException{

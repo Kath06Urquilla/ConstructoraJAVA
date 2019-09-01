@@ -24,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
      */
     frmEmpleado frme = new frmEmpleado();
     frmMateriales frmmate = new frmMateriales();
+    frmUsuario frmusu = new frmUsuario();
    // frmMaterailes frmmate = new frmMaterailes();
     public Principal() throws ClassNotFoundException, SQLException {
         initComponents();
@@ -48,6 +49,7 @@ public class Principal extends javax.swing.JFrame {
                 this.setExtendedState(Principal.MAXIMIZED_BOTH);
                 ifempleado.setContentPane(frme);
                 ifmateriales.setContentPane(frmmate);
+                ifusuarios.setContentPane(frmusu);                
                 
             } catch (Exception e) {
             }
@@ -75,11 +77,13 @@ public class Principal extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         ifempleado = new javax.swing.JInternalFrame();
         ifmateriales = new javax.swing.JInternalFrame();
+        ifusuarios = new javax.swing.JInternalFrame();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
         saveMenuItem = new javax.swing.JMenuItem();
         saveAsMenuItem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         deleteMenuItem = new javax.swing.JMenuItem();
@@ -104,7 +108,7 @@ public class Principal extends javax.swing.JFrame {
         );
 
         desktopPane.add(ifempleado);
-        ifempleado.setBounds(30, 10, 880, 650);
+        ifempleado.setBounds(10, 10, 880, 650);
 
         ifmateriales.setClosable(true);
         ifmateriales.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -125,6 +129,26 @@ public class Principal extends javax.swing.JFrame {
 
         desktopPane.add(ifmateriales);
         ifmateriales.setBounds(10, 10, 780, 550);
+
+        ifusuarios.setClosable(true);
+        ifusuarios.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        ifusuarios.setIconifiable(true);
+        ifusuarios.setMaximizable(true);
+        ifusuarios.setVisible(false);
+
+        javax.swing.GroupLayout ifusuariosLayout = new javax.swing.GroupLayout(ifusuarios.getContentPane());
+        ifusuarios.getContentPane().setLayout(ifusuariosLayout);
+        ifusuariosLayout.setHorizontalGroup(
+            ifusuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        ifusuariosLayout.setVerticalGroup(
+            ifusuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        desktopPane.add(ifusuarios);
+        ifusuarios.setBounds(10, 10, 700, 500);
 
         fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ca.png"))); // NOI18N
         fileMenu.setMnemonic('f');
@@ -164,6 +188,15 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         fileMenu.add(saveAsMenuItem);
+
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
+        jMenuItem1.setText("Usuarios");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem1);
 
         exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         exitMenuItem.setMnemonic('x');
@@ -228,6 +261,10 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fileMenuMouseClicked
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        ifusuarios.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -278,6 +315,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JInternalFrame ifempleado;
     private javax.swing.JInternalFrame ifmateriales;
+    private javax.swing.JInternalFrame ifusuarios;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
