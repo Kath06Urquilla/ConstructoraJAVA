@@ -60,6 +60,11 @@ public class frmMateriales extends javax.swing.JPanel {
         jLabel5.setText("Buscar dato...");
 
         txtBuscarDato.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        txtBuscarDato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarDatoActionPerformed(evt);
+            }
+        });
         txtBuscarDato.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBuscarDatoKeyPressed(evt);
@@ -416,6 +421,10 @@ public class frmMateriales extends javax.swing.JPanel {
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtBuscarDatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarDatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarDatoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
