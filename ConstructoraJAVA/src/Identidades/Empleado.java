@@ -10,6 +10,11 @@ package Identidades;
  * @author jorge Alberto
  */
 public class Empleado {
+    private int idUsuario;
+    private String usuario;
+    private String correo;
+    private String contraseña;
+    private String avatar;
     private int idEmpleado;
     private String nombre;
     private String direccion;
@@ -18,17 +23,17 @@ public class Empleado {
     private String fechaNacimiento;
     private String tipoEmpleado;
     private double pagoDia;
-    private String idUsuario;
+    //private String idUsuario;
     private int estado;
 
     public Empleado() {
     }
 
-    public Empleado(String idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public Empleado(int idEmpleado, String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double pagoDia, String idUsuario, int estado) {
+    public Empleado(String usuario, String correo, String contraseña, String avatar, int idEmpleado, String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double pagoDia, int estado) {
+        this.usuario = usuario;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.avatar = avatar;
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -37,31 +42,67 @@ public class Empleado {
         this.fechaNacimiento = fechaNacimiento;
         this.tipoEmpleado = tipoEmpleado;
         this.pagoDia = pagoDia;
-        this.idUsuario = idUsuario;
         this.estado = estado;
     }
 
-    public Empleado(String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double pagoDia, String idUsuario) {
+    public Empleado(int idUsuario, String usuario, String correo, String contraseña, String avatar, int idEmpleado, String nombre, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double pagoDia, int estado) {
+        this.idUsuario = idUsuario;
+        this.usuario = usuario;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.avatar = avatar;
+        this.idEmpleado = idEmpleado;
         this.nombre = nombre;
-        this.direccion = direccion;
         this.telefono = telefono;
         this.dui = dui;
         this.fechaNacimiento = fechaNacimiento;
         this.tipoEmpleado = tipoEmpleado;
         this.pagoDia = pagoDia;
+        this.estado = estado;
+    }
+
+    public Empleado(String usuario, String correo, String contraseña, String avatar, String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double parseDouble) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public Empleado(int idEmpleado, String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double pagoDia, String idUsuario) {
-        this.idEmpleado = idEmpleado;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.dui = dui;
-        this.fechaNacimiento = fechaNacimiento;
-        this.tipoEmpleado = tipoEmpleado;
-        this.pagoDia = pagoDia;
-        this.idUsuario = idUsuario;
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public Empleado(int idEmpleado) {
@@ -130,14 +171,6 @@ public class Empleado {
 
     public void setPagoDia(double pagoDia) {
         this.pagoDia = pagoDia;
-    }
-
-    public String getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public int getEstado() {
