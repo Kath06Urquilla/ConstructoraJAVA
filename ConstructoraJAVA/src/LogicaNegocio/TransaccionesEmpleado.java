@@ -21,7 +21,7 @@ public class TransaccionesEmpleado {
     DaoEmpleado ob=new DaoEmpleado();
     public DefaultTableModel mostrar(){
         ArrayList<Empleado> ar=new ArrayList<Empleado>();
-        String[] title={"USUARIO", "CORREO","PASSWORD", "AVATAR","ID", "NOMBRE", 
+        String[] title={"ID","USUARIO", "CORREO","PASSWORD", "ID", "NOMBRE", 
             "DIRECCIÓN","TELEFONO","DUI","NACIMIENTO",
             "TIPO EMPLEADO","PAGO DÍA"};
         DefaultTableModel tm=new DefaultTableModel(title,0);
@@ -30,10 +30,10 @@ public class TransaccionesEmpleado {
             ar.addAll(ob.mostrar());
             Object[] vec=new Object[12];
             for(Empleado  v: ar){
-                vec[0]=v.getUsuario();
-                vec[1]=v.getCorreo();
-                vec[2]=v.getContraseña();
-                vec[3]=v.getAvatar();
+                vec[0]=v.getIdUsuario();
+                vec[1]=v.getUsuario();
+                vec[2]=v.getCorreo();
+                vec[3]=v.getContraseña();
                 vec[4]=v.getIdEmpleado();
                 vec[5]=v.getNombre();
                 vec[6]=v.getDireccion();
@@ -49,11 +49,11 @@ public class TransaccionesEmpleado {
         }
         return tm;
     }
-    public void agregar(String usuario, String correo, String contraseña, String avatar,
+    public void agregar(String usuario, String correo, String contraseña, 
             String nombre,String direccion, String telefono, String dui,
             String fechaNacimiento, String tipoEmpleado, String pagoDia){
         try {
-            em=new Empleado(usuario, correo, contraseña, avatar, nombre, direccion,
+            em=new Empleado(usuario, correo, contraseña, nombre, direccion,
                   telefono, dui, fechaNacimiento, tipoEmpleado, Double.parseDouble(pagoDia));
             res=ob.agregarEmpleado(em);
             
@@ -68,10 +68,10 @@ public class TransaccionesEmpleado {
     }
     
     public void modificar(String usuario, String correo, String contraseña, 
-            String avatar, int idUsuario,String nombre,String direccion, String telefono, String dui,
+             int idUsuario,String nombre,String direccion, String telefono, String dui,
             String fechaNacimiento, String tipoEmpleado, String pagoDia, int idEmpleado){
        try {
-            em=new Empleado(usuario, correo, contraseña, avatar, idUsuario, 
+            em=new Empleado(usuario, correo, contraseña, idUsuario, 
                     nombre,direccion, telefono, dui, fechaNacimiento, 
                     tipoEmpleado, Double.parseDouble(pagoDia),idEmpleado);
             res=ob.modificarEmpleado(em);
@@ -84,12 +84,13 @@ public class TransaccionesEmpleado {
         }
     }
     
-    public void eliminar(int idEmpleado, int idUsuario){
+    public void eliminar(int idUsuario,int idEmpleado){
         try {
+            em=new Empleado(idUsuario);
+             res=ob.eliminarEmpleado(em);
              em=new Empleado(idEmpleado);
              res=ob.eliminarEmpleado(em);
-             em=new Empleado(idUsuario);
-             res=ob.eliminarEmpleado(em);
+             
             if(res>0)
                 JOptionPane.showMessageDialog(null, "Registro eliminado con éxito");
             else

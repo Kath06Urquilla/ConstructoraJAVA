@@ -105,7 +105,6 @@ public class frmCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(700, 580));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -218,6 +217,11 @@ public class frmCliente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtDui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDuiActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 160, 30));
 
         try {
@@ -238,6 +242,11 @@ public class frmCliente extends javax.swing.JFrame {
         txtConfirmarContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtConfirmarContraseñaMouseClicked(evt);
+            }
+        });
+        txtConfirmarContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConfirmarContraseñaActionPerformed(evt);
             }
         });
         jPanel1.add(txtConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 160, 30));
@@ -299,6 +308,14 @@ public class frmCliente extends javax.swing.JFrame {
     private void txtContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContraseñaMouseClicked
         this.txtContraseña.setText("");
     }//GEN-LAST:event_txtContraseñaMouseClicked
+
+    private void txtConfirmarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConfirmarContraseñaActionPerformed
+
+    private void txtDuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDuiActionPerformed
 
     /**
      * @param args the command line arguments
