@@ -58,8 +58,8 @@ public class DaoEmpleado extends Conexion implements CrudEmpleado{
             res = ps.executeUpdate();
             
             ps=super.con().prepareStatement("insert into empleado(nombre, direccion,"
-                    + " telefono, dui,fechaNacimiento, tipoEmpleado,pagoDia, "
-                    + "idUsuario,estado) values(?,?,?,?,?,?,?,(select idUsuario from usuario order by idUsuario DESC limit 1),1)");
+                    + " telefono, dui, fechaNacimiento, tipoEmpleado, pagoDia, "
+                    + "idUsuario, estado) values(?,?,?,?,?,?,?,(select idUsuario from usuario order by idUsuario DESC limit 1),1)");
             ps.setString(1, em.getNombre());
             ps.setString(2, em.getDireccion());
             ps.setString(3, em.getTelefono());

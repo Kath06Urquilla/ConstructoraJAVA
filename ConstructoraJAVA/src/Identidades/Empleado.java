@@ -29,12 +29,12 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(String usuario, String correo, String contraseña, String avatar, int idEmpleado, String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double pagoDia, int estado) {
+    public Empleado(String usuario, String correo, String contraseña, String avatar, String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double pagoDia) {
         this.usuario = usuario;
         this.correo = correo;
         this.contraseña = contraseña;
         this.avatar = avatar;
-        this.idEmpleado = idEmpleado;
+        //this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -42,7 +42,7 @@ public class Empleado {
         this.fechaNacimiento = fechaNacimiento;
         this.tipoEmpleado = tipoEmpleado;
         this.pagoDia = pagoDia;
-        this.estado = estado;
+       // this.estado = estado;
     }
 
     public Empleado(int idUsuario, String usuario, String correo, String contraseña, String avatar, int idEmpleado, String nombre, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double pagoDia, int estado) {
@@ -61,9 +61,9 @@ public class Empleado {
         this.estado = estado;
     }
 
-    public Empleado(String usuario, String correo, String contraseña, String avatar, String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double parseDouble) {
+    /*public Empleado(String usuario, String correo, String contraseña, String avatar, String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double parseDouble) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 
     public int getIdUsuario() {
         return idUsuario;

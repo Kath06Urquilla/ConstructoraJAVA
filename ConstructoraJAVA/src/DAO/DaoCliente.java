@@ -26,11 +26,10 @@ public class DaoCliente extends Conexion implements CrudCliente{
     
         try {
             ps = super.con().prepareStatement("INSERT INTO usuario(usuario, correo,"
-                    + " contraseña, avatar, rol) VALUES (?,?,?,?,'Invitado')");
+                    + " contraseña, rol) VALUES (?,?,?,'Cliente')");
             ps.setString(1, c.getUsuario());
             ps.setString(2, c.getCorreo());
             ps.setString(3, c.getContraseña());
-            ps.setString(4, c.getAvatar());
             res = ps.executeUpdate();
             
             ps = super.con().prepareStatement("INSERT INTO cliente(nombre, direccion,"
