@@ -1,6 +1,7 @@
 package Presentacion;
 
 import LogicaNegocio.TransaccionesCliente;
+import javax.swing.JOptionPane;
 
 /**
  * Nombre del formulario: frmCliente
@@ -16,6 +17,7 @@ public class frmCliente extends javax.swing.JFrame {
     /** Creates new form frmCliente */
     public frmCliente() {
         initComponents();
+        this.setLocationRelativeTo(this);
     }
 
     /** This method is called from within the constructor to
@@ -27,58 +29,39 @@ public class frmCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        btnRegistrar = new javax.swing.JButton();
+        txtDui = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtFechaNacimiento = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtFechaNacimiento = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        txtCorreo = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        txtAvatar = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txtDireccion = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        txtDui = new javax.swing.JTextField();
-        btnRegistrar = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtContraseña = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txtConfirmarContraseña = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(600, 600));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Cliente");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Usuario:");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Contraseña:");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Nombre:");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Telefono:");
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Fecha nac:");
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Correo:");
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setText("Avatar");
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setText("Direccion:");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setText("Dui:");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 600));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegistrar.setText("Registrarse");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -86,125 +69,123 @@ public class frmCliente extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 210, 40));
+        jPanel1.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 140, 30));
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 360, 30));
+        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 140, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(280, 280, 280)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel2)
-                        .addGap(13, 13, 13)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel7)
-                        .addGap(17, 17, 17)
-                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel3)
-                        .addGap(5, 5, 5)
-                        .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel8)
-                        .addGap(24, 24, 24)
-                        .addComponent(txtAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel5)
-                        .addGap(5, 5, 5)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel10)
-                        .addGap(43, 43, 43)
-                        .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel6)
-                        .addGap(7, 7, 7)
-                        .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel4)
-                        .addGap(9, 9, 9)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(107, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel7))))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel8))))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel9)
-                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel10))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel6))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
+        jLabel7.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(21, 40, 147));
+        jLabel7.setText("Correo:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(21, 40, 147));
+        jLabel9.setText("Direccion:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(21, 40, 147));
+        jLabel10.setText("Dui:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+        jPanel1.add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 140, 30));
+
+        jLabel6.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(21, 40, 147));
+        jLabel6.setText("Fecha nac:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(21, 40, 147));
+        jLabel5.setText("Telefono:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 140, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 140, 30));
+
+        jLabel4.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(21, 40, 147));
+        jLabel4.setText("Nombre:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(21, 40, 147));
+        jLabel3.setText("Contraseña:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 140, 30));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 140, 30));
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(21, 40, 147));
+        jLabel2.setText("Usuario:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar.png"))); // NOI18N
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 40, 50));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/atras.png"))); // NOI18N
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 40, 50));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/minimizar.png"))); // NOI18N
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 40, 50));
+
+        jLabel14.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(21, 40, 147));
+        jLabel14.setText("Registro de Clientes");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(21, 40, 147));
+        jLabel15.setText("<html> Confirmar Contraseña: </html>");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 110, 60));
+        jPanel1.add(txtConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 140, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         ob.agregar(txtUsuario.getText(), txtCorreo.getText(), txtContraseña.getText(),
-                txtAvatar.getText(), txtNombre.getText(), txtDireccion.getText(), 
-                txtTelefono.getText(), txtDui.getText(), txtFechaNacimiento.getText());
+                txtNombre.getText(), txtDireccion.getText(), txtTelefono.getText(), 
+                txtDui.getText(), txtFechaNacimiento.getText());
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+       Login log = new Login();
+       log.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        int dialogo = JOptionPane.YES_NO_OPTION;
+        int resultado = JOptionPane.showConfirmDialog(null, "Desea cerrar la aplicación?", "Cerrar Aplicacion",2 ,dialogo);
+
+        if(resultado == 0){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+       this.setState(frmCliente.ICONIFIED); //Para minimizar la aplicacion
+    }//GEN-LAST:event_jLabel13MouseClicked
 
     /**
      * @param args the command line arguments
@@ -243,17 +224,21 @@ public class frmCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtAvatar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtConfirmarContraseña;
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDireccion;
