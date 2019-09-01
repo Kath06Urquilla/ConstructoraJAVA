@@ -27,19 +27,19 @@ public class DaoEmpleado extends Conexion implements CrudEmpleado{
     ArrayList<Empleado> ar=new ArrayList<Empleado>();
         try {
             //ps=super.con().prepareStatement("select * from empleado where estado=1");
-            ps=super.con().prepareStatement("select u.usuario, u.correo, u.contraseña, u.avatar, "
+            ps=super.con().prepareStatement("select u.idUsuario, u.usuario, u.correo, u.contraseña, "
                     + "e.idEmpleado, e.nombre, e.direccion,e.telefono, e.dui, "
                     + "e.fechaNacimiento, e.tipoEmpleado, e.pagoDia FROM empleado e "
                     + "INNER JOIN usuario u ON e.idUsuario = u.idUsuario where e.estado=1"); 
             rs=ps.executeQuery();
             while(rs.next()){
-                em=new Empleado(rs.getString(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4),rs.getInt(5),rs.getString(6),rs.getString(7),
+                em=new Empleado(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getInt(5),rs.getString(6),rs.getString(7),
                         rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getString(11), rs.getDouble(12));
                 ar.add(em);
             }
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             
             JOptionPane.showMessageDialog(null, e.getMessage());
       
@@ -53,11 +53,10 @@ public class DaoEmpleado extends Conexion implements CrudEmpleado{
     public int agregarEmpleado(Empleado em) throws ClassNotFoundException, SQLException {
         try {
             ps = super.con().prepareStatement("INSERT INTO usuario(usuario, correo,"
-                    + " contraseña, avatar, rol) VALUES (?,?,?,?,'Empleado')");
+                    + " contraseña, rol) VALUES (?,?,?,'Empleado')");
             ps.setString(1, em.getUsuario());
             ps.setString(2, em.getCorreo());
             ps.setString(3, em.getContraseña());
-            ps.setString(4, em.getAvatar());
             res = ps.executeUpdate();
             
             ps=super.con().prepareStatement("insert into empleado(nombre, direccion,"
@@ -84,12 +83,11 @@ public class DaoEmpleado extends Conexion implements CrudEmpleado{
     public int modificarEmpleado(Empleado em) throws ClassNotFoundException, SQLException {
         try {
             ps = super.con().prepareStatement("update usuario set usuario=?, correo=?,"
-                    + " contraseña=?, avatar=?, rol='Empleado' where idUsuario=?");
+                    + " contraseña=?, rol='Empleado' where idUsuario=?");
             ps.setString(1, em.getUsuario());
             ps.setString(2, em.getCorreo());
             ps.setString(3, em.getContraseña());
-            ps.setString(4, em.getAvatar());
-            ps.setInt(5, em.getIdUsuario());
+            ps.setInt(4, em.getIdUsuario());
             res = ps.executeUpdate();
             
             ps=super.con().prepareStatement("update empleado set nombre=?, direccion=?,"
@@ -115,14 +113,15 @@ public class DaoEmpleado extends Conexion implements CrudEmpleado{
     @Override
     public int eliminarEmpleado(Empleado em) throws ClassNotFoundException, SQLException {
      try {
+            ps=super.con().prepareStatement("delete from usuario where idUsuario=?");
+            ps.setInt(1, em.getIdUsuario());
+            res=ps.executeUpdate();
             ps=super.con().prepareStatement("update empleado set estado=0 where idEmpleado=?");
             ps.setInt(1, em.getIdEmpleado());
             res=ps.executeUpdate();
             
            // ps=super.con().prepareStatement("delete from empleado where idEmpleado=?");
-           ps=super.con().prepareStatement("delete from usuario where idUsuario=?");
-            ps.setInt(1, em.getIdUsuario());
-            res=ps.executeUpdate();
+           
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
