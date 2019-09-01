@@ -9,6 +9,7 @@ import DAO.DaoEmpleado;
 import DAO.hash;
 import LogicaNegocio.TransaccionesEmpleado;
 import LogicaNegocio.Validaciones;
+import com.placeholder.PlaceHolder;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,7 +28,7 @@ Validaciones v = new Validaciones();
         btnaceptar.setEnabled(false);
         validaciones();
         txtidusuario.setVisible(false);
-        
+        txtidusuario.setFocusable(true);
     }
 private  void llenar(){
     tabla1.setModel(ob.mostrar());
@@ -167,10 +168,6 @@ private  void llenar(){
         jLabel13.setForeground(new java.awt.Color(255, 153, 51));
         jLabel13.setText("REGISTRARSE COMO EMPLEADO");
 
-        txtcontra.setText("jPasswordField1");
-
-        txtconfirmar.setText("jPasswordField1");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -180,7 +177,7 @@ private  void llenar(){
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtidusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel9))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -321,13 +318,12 @@ private  void llenar(){
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(66, 66, 66)
-                                .addComponent(jLabel5)
-                                .addGap(30, 30, 30)
-                                .addComponent(txtdui, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtfnac, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel5))
+                            .addComponent(jLabel6))
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfnac, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtdui, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -547,6 +543,7 @@ private  void llenar(){
        txtusuario.setText(tabla1.getValueAt(f, 1).toString());
        txtemail.setText(tabla1.getValueAt(f, 2).toString());
        txtcontra.setText(tabla1.getValueAt(f, 3).toString());
+       txtconfirmar.setText(tabla1.getValueAt(f, 3).toString());
         txtid.setText(tabla1.getValueAt(f, 4).toString());
         txtnombre.setText(tabla1.getValueAt(f, 5).toString());
         txtdireccion.setText(tabla1.getValueAt(f, 6).toString());
@@ -602,6 +599,7 @@ private  void llenar(){
         txttipo.setText("");
         txtsalario.setText("");
     }
+    
     public void encriptar() {
         //String invitado = "Cliente";
 
@@ -625,7 +623,7 @@ private  void llenar(){
 
                     String nuevoPass = hash.sha1(pass);
 
-                    ob.agregar(txtusuario.getText(), txtemail.getText(), txtcontra.getText(),
+                    ob.agregar(txtusuario.getText(), txtemail.getText(), nuevoPass,
                 txtnombre.getText(),txtdireccion.getText(),
                 txttelefono.getText(), txtdui.getText(), txtfnac.getText(),
                 txttipo.getText(),txtsalario.getText());   
@@ -633,7 +631,7 @@ private  void llenar(){
 
                     Limpiar();
                 } else {
-                    JOptionPane.showMessageDialog(null, "El suario ya existe.!!");
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe.!!");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
