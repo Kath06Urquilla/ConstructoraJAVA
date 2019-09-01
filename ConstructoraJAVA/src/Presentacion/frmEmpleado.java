@@ -6,6 +6,7 @@
 package Presentacion;
 
 import LogicaNegocio.TransaccionesEmpleado;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -433,7 +434,7 @@ private  void llenar(){
         ob.agregar(txtusuario.getText(), txtemail.getText(), txtcontra.getText(),
                 txtavatar.getText(), txtnombre.getText(),txtdireccion.getText(),
                 txttelefono.getText(), txtdui.getText(), txtfnac.getText(),
-                txttipo.getText(),txtsalario.getText());
+                txttipo.getText(),txtsalario.getText());        
        llenar();
     }//GEN-LAST:event_btnaceptarActionPerformed
 

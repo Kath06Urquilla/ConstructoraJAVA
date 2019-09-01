@@ -52,12 +52,14 @@ public class TransaccionesEmpleado {
             em=new Empleado(usuario, correo, contraseña, avatar, nombre, direccion,
                   telefono, dui, fechaNacimiento, tipoEmpleado, Double.parseDouble(pagoDia));
             res=ob.agregarEmpleado(em);
+            
             if(res>0)
                 JOptionPane.showMessageDialog(null, "Registro ingresado correctamente");
             else
                 JOptionPane.showMessageDialog(null, "Registro no se pudo ingresar");
             
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
     
