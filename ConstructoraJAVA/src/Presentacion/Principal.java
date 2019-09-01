@@ -17,6 +17,8 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     frmEmpleado frme = new frmEmpleado();
+    frmMateriales frmmate = new frmMateriales();
+   // frmMaterailes frmmate = new frmMaterailes();
     public Principal() {
         initComponents();
         IniciarPanel();
@@ -28,6 +30,8 @@ public class Principal extends javax.swing.JFrame {
     this.getContentPane().setBackground(Color.black);
     this.setExtendedState(Principal.MAXIMIZED_BOTH);
         ifempleado.setContentPane(frme);
+        ifmateriales.setContentPane(frmmate);
+      //  ifmateriales.setContentPane(frmmate);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,6 +44,7 @@ public class Principal extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         ifempleado = new javax.swing.JInternalFrame();
+        ifmateriales = new javax.swing.JInternalFrame();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -71,9 +76,34 @@ public class Principal extends javax.swing.JFrame {
         desktopPane.add(ifempleado);
         ifempleado.setBounds(30, 10, 880, 650);
 
+        ifmateriales.setClosable(true);
+        ifmateriales.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        ifmateriales.setIconifiable(true);
+        ifmateriales.setMaximizable(true);
+        ifmateriales.setVisible(false);
+
+        javax.swing.GroupLayout ifmaterialesLayout = new javax.swing.GroupLayout(ifmateriales.getContentPane());
+        ifmateriales.getContentPane().setLayout(ifmaterialesLayout);
+        ifmaterialesLayout.setHorizontalGroup(
+            ifmaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        ifmaterialesLayout.setVerticalGroup(
+            ifmaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        desktopPane.add(ifmateriales);
+        ifmateriales.setBounds(10, 10, 780, 550);
+
         fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ca.png"))); // NOI18N
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
+        fileMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fileMenuMouseClicked(evt);
+            }
+        });
 
         openMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/em1.png"))); // NOI18N
         openMenuItem.setMnemonic('o');
@@ -98,6 +128,11 @@ public class Principal extends javax.swing.JFrame {
         saveAsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/materiales1.png"))); // NOI18N
         saveAsMenuItem.setMnemonic('a');
         saveAsMenuItem.setText("Materiales");
+        saveAsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveAsMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(saveAsMenuItem);
 
         exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
@@ -155,6 +190,14 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
+    private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
+        ifmateriales.setVisible(true);
+    }//GEN-LAST:event_saveAsMenuItemActionPerformed
+
+    private void fileMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fileMenuMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fileMenuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -198,6 +241,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JInternalFrame ifempleado;
+    private javax.swing.JInternalFrame ifmateriales;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
