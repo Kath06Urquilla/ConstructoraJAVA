@@ -130,4 +130,25 @@ public class DaoEmpleado extends Conexion implements CrudEmpleado{
         }
         return res;
     }
+    public int existeUsuario(String usuario){    
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+          
+        try {
+             ps = super.con().prepareStatement("select count(idUsuario) from usuario where usuario=?");
+             ps.setString(1, usuario);
+             rs = ps.executeQuery();
+             
+             if(rs.next()){
+                 return rs.getInt(1);
+             }
+             
+             return 1;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            return 1;
+        }
+    
+    }
 }
