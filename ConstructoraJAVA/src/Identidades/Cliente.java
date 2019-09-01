@@ -19,6 +19,7 @@ public class Cliente {
     private String telefono;
     private String dui;
     private String fechaNacimiento;
+    private String rol;
 
     //Constructor vacio
     public Cliente() {
@@ -35,6 +36,15 @@ public class Cliente {
         this.dui = dui;
         this.fechaNacimiento = fechaNacimiento;
     }
+    
+    //constructor login
+    public Cliente(String usuario, String correo, String contraseña, String rol) {
+        this.usuario = usuario;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.rol = rol;
+    }
+    
     
     //Getters y setters
     public int getIdUsuario() {
@@ -108,5 +118,15 @@ public class Cliente {
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+    
+    
         
 }

@@ -5,6 +5,8 @@
  */
 package Presentacion;
 
+import DAO.hash;
+import DAO.DaoCliente;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +22,37 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(this);
     }
+    
+    public void iniciarSecion(){
+        DaoCliente ob = new DaoCliente();
+        Identidades.Cliente mod = new Identidades.Cliente();
+        
+        String pass = new String(txtContraseña.getPassword());
+        
+        if(!txtUsuario.getText().equals("") && !pass.equals("")){
+            String nuevoPass = hash.sha1(pass);
+            
+            mod.setUsuario(txtUsuario.getText());
+            mod.setContraseña(nuevoPass);
+            
+            if(ob.login(mod)){   
+                
+                try {
+                    Principal md = new Principal(mod);
+                    md.setVisible(true);
+                    this.dispose();
+                } catch (Exception e) {
+                }               
+                           
+            }else{
+                JOptionPane.showMessageDialog(null, "Datos incorrectots.!!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe ingresar sus Datos.!!");
+        }
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,7 +147,7 @@ public class Login extends javax.swing.JFrame {
         txtUsuario.setForeground(new java.awt.Color(153, 153, 153));
         txtUsuario.setText("Usuario");
         txtUsuario.setBorder(null);
-        txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtUsuarioMouseClicked(evt);
@@ -126,7 +159,7 @@ public class Login extends javax.swing.JFrame {
         txtContraseña.setForeground(new java.awt.Color(153, 153, 153));
         txtContraseña.setText("jPasswordField1");
         txtContraseña.setBorder(null);
-        txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtContraseñaMouseClicked(evt);
@@ -165,6 +198,11 @@ public class Login extends javax.swing.JFrame {
         btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIniciar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/inicio2.png"))); // NOI18N
         btnIniciar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/inicio2.png"))); // NOI18N
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 310, 40));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 310, 20));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 310, 20));
@@ -226,6 +264,10 @@ public class Login extends javax.swing.JFrame {
         cli.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+       iniciarSecion();
+    }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
      * @param args the command line arguments

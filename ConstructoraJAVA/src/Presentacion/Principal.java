@@ -5,13 +5,19 @@
  */
 package Presentacion;
 
+import Identidades.Cliente;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author jorge Alberto
  */
 public class Principal extends javax.swing.JFrame {
+    
+    Cliente mod;
 
     /**
      * Creates new form Principal
@@ -19,20 +25,44 @@ public class Principal extends javax.swing.JFrame {
     frmEmpleado frme = new frmEmpleado();
     frmMateriales frmmate = new frmMateriales();
    // frmMaterailes frmmate = new frmMaterailes();
-    public Principal() {
+    public Principal() throws ClassNotFoundException, SQLException {
         initComponents();
-        IniciarPanel();
-        
+        //IniciarPanel();        
         
     }
-    void IniciarPanel(){
+    
+    public Principal(Cliente mod) throws ClassNotFoundException, SQLException{
+        initComponents();
+        
+        this.mod = mod;
+        
+        if("Cliente".equals(mod.getRol())){
+            llenado();
+        }
+    }
+    
+        void llenado(){
+        
+            try {
+                this.getContentPane().setBackground(Color.black);
+                this.setExtendedState(Principal.MAXIMIZED_BOTH);
+                ifempleado.setContentPane(frme);
+                ifmateriales.setContentPane(frmmate);
+                
+            } catch (Exception e) {
+            }
+        }
+
+    
+    /*void IniciarPanel(){
         //Color MDI
     this.getContentPane().setBackground(Color.black);
     this.setExtendedState(Principal.MAXIMIZED_BOTH);
         ifempleado.setContentPane(frme);
         ifmateriales.setContentPane(frmmate);
       //  ifmateriales.setContentPane(frmmate);
-    }
+    }*/
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -229,7 +259,13 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                try {
+                    new Principal().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
