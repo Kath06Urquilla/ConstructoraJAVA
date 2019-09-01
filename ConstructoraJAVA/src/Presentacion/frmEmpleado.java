@@ -6,7 +6,7 @@
 package Presentacion;
 
 import LogicaNegocio.TransaccionesEmpleado;
-import javax.swing.JOptionPane;
+import LogicaNegocio.Validaciones;
 
 /**
  *
@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class frmEmpleado extends javax.swing.JPanel {
 TransaccionesEmpleado ob=new TransaccionesEmpleado();
+Validaciones v = new Validaciones();
     /**
      * Creates new form frmEmpleado
      */
@@ -21,6 +22,7 @@ TransaccionesEmpleado ob=new TransaccionesEmpleado();
         initComponents();
         llenar();
         btnaceptar.setEnabled(false);
+        validaciones();
         
     }
 private  void llenar(){
@@ -219,10 +221,22 @@ private  void llenar(){
         jLabel7.setForeground(new java.awt.Color(51, 0, 51));
         jLabel7.setText("Tipo de empleado");
 
+        txtdireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdireccionActionPerformed(evt);
+            }
+        });
+
         txtid.setEnabled(false);
         txtid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtidActionPerformed(evt);
+            }
+        });
+
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
             }
         });
 
@@ -503,6 +517,25 @@ private  void llenar(){
         Limpiar();
         btnaceptar.setEnabled(true);
     }//GEN-LAST:event_btnnuevoActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+        
+    }//GEN-LAST:event_txtnombreActionPerformed
+    void validaciones()
+    {
+        v.validarSoloLetrasEspacio(txtnombre);
+        v.validarSoloLetrasEspacio(txtdireccion);
+        v.validarSoloLetrasEspacio(txttipo);
+        v.validarSoloNumerosGuiones(txttelefono);
+        v.validarSoloNumerosPunto(txtsalario);
+        v.validarSoloNumerosGuiones(txtdui);
+        v.validarSoloNumerosGuiones(txtfnac);
+        v.validarSoloNumerosGuiones(txtusuario);
+        v.validarNumeroLestrasArroba(txtemail);
+    }
+    private void txtdireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdireccionActionPerformed
+        
+    }//GEN-LAST:event_txtdireccionActionPerformed
     void Limpiar()
     {
         txtidusuario.setText("");
