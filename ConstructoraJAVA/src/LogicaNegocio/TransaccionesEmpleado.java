@@ -45,11 +45,12 @@ public class TransaccionesEmpleado {
         }
         return tm;
     }
-    public void agregar(String nombre,String direccion, String telefono, String dui,
-            String fechaNacimiento, String tipoEmpleado, String pagoDia, String idUsuario){
+    public void agregar(String usuario, String correo, String contraseña, String avatar,
+            String nombre,String direccion, String telefono, String dui,
+            String fechaNacimiento, String tipoEmpleado, String pagoDia){
         try {
-            em=new Empleado(nombre, direccion, telefono, dui, fechaNacimiento, 
-                    tipoEmpleado,Double.parseDouble(pagoDia),idUsuario);
+            em=new Empleado(usuario, correo, contraseña, avatar, nombre, direccion,
+                  telefono, dui, fechaNacimiento, tipoEmpleado, Double.parseDouble(pagoDia));
             res=ob.agregarEmpleado(em);
             if(res>0)
                 JOptionPane.showMessageDialog(null, "Registro ingresado correctamente");
@@ -62,7 +63,7 @@ public class TransaccionesEmpleado {
     
     public void modificar(int idEmpleado,String nombre,String direccion, String telefono, String dui,
             String fechaNacimiento, String tipoEmpleado, String pagoDia, String idUsuario){
-        try {
+       /*try {
             em=new Empleado(idEmpleado, nombre,direccion, telefono, dui, fechaNacimiento, 
                     tipoEmpleado, Double.parseDouble(pagoDia),idUsuario);
             res=ob.modificarEmpleado(em);
@@ -72,11 +73,11 @@ public class TransaccionesEmpleado {
                 JOptionPane.showMessageDialog(null, "Registro no se pudo modificar");
             
         } catch (Exception e) {
-        }
+        }*/
     }
     
     public void eliminar(int idEmpleado){
-        try {
+       /* try {
              em=new Empleado(idEmpleado);
              res=ob.eliminarEmpleado(em);
             if(res>0)
@@ -85,6 +86,6 @@ public class TransaccionesEmpleado {
                 JOptionPane.showMessageDialog(null, "Registro no eliminado");
             
         } catch (Exception e) {
-        }
+        }*/
     }
 }
