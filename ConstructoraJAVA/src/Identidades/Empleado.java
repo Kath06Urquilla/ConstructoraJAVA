@@ -61,9 +61,20 @@ public class Empleado {
         this.estado = estado;
     }
 
-    /*public Empleado(String usuario, String correo, String contraseña, String avatar, String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double parseDouble) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
+    public Empleado(String usuario, String correo, String contraseña, String avatar, int idEmpleado, String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double pagoDia) {
+        this.usuario = usuario;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.avatar = avatar;
+        this.idEmpleado = idEmpleado;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.dui = dui;
+        this.fechaNacimiento = fechaNacimiento;
+        this.tipoEmpleado = tipoEmpleado;
+        this.pagoDia = pagoDia;
+    }
 
     public int getIdUsuario() {
         return idUsuario;

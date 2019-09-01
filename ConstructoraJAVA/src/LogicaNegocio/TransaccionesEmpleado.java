@@ -21,23 +21,27 @@ public class TransaccionesEmpleado {
     DaoEmpleado ob=new DaoEmpleado();
     public DefaultTableModel mostrar(){
         ArrayList<Empleado> ar=new ArrayList<Empleado>();
-        String[] title={"ID", "NOMBRE", "DIRECCIÓN","TELEFONO","DUI","NACIMIENTO",
-            "TIPO EMPLEADO","PAGO DÍA", "USUARIO", "PASSWORD", "ROL"};
+        String[] title={"USUARIO", "CORREO","PASSWORD", "AVATAR","ID", "NOMBRE", 
+            "DIRECCIÓN","TELEFONO","DUI","NACIMIENTO",
+            "TIPO EMPLEADO","PAGO DÍA"};
         DefaultTableModel tm=new DefaultTableModel(title,0);
         
         try {
             ar.addAll(ob.mostrar());
-            Object[] vec=new Object[10];
+            Object[] vec=new Object[12];
             for(Empleado  v: ar){
-                vec[0]=v.getIdEmpleado();
-                vec[1]=v.getNombre();
-                vec[2]=v.getDireccion();
-                vec[3]=v.getTelefono();
-                vec[4]=v.getDui();
-                vec[5]=v.getFechaNacimiento();
-                vec[6]=v.getTipoEmpleado();
-                vec[7]=v.getPagoDia();
-                vec[8]=v.getIdUsuario();
+                vec[0]=v.getUsuario();
+                vec[1]=v.getCorreo();
+                vec[2]=v.getContraseña();
+                vec[3]=v.getAvatar();
+                vec[4]=v.getIdEmpleado();
+                vec[5]=v.getNombre();
+                vec[6]=v.getDireccion();
+                vec[7]=v.getTelefono();
+                vec[8]=v.getDui();
+                vec[9]=v.getFechaNacimiento();
+                vec[10]=v.getTipoEmpleado();
+                vec[11]=v.getPagoDia();
                 tm.addRow(vec);
             }
         } catch (Exception e) {
