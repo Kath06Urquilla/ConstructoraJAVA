@@ -5,8 +5,11 @@
  */
 package Presentacion;
 
+import DAO.DaoEmpleado;
+import DAO.hash;
 import LogicaNegocio.TransaccionesEmpleado;
 import LogicaNegocio.Validaciones;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -510,11 +513,7 @@ private  void llenar(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaceptarActionPerformed
-        ob.agregar(txtusuario.getText(), txtemail.getText(), txtcontra.getText(),
-                txtnombre.getText(),txtdireccion.getText(),
-                txttelefono.getText(), txtdui.getText(), txtfnac.getText(),
-                txttipo.getText(),txtsalario.getText());   
-       llenar();
+        encriptar();
     }//GEN-LAST:event_btnaceptarActionPerformed
 
     private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
@@ -580,8 +579,6 @@ private  void llenar(){
         v.validarSoloLetrasEspacio(txtdireccion);
         v.validarSoloLetrasEspacio(txttipo);
         v.validarSoloNumerosPunto(txtsalario);
-        v.validarSoloNumerosGuiones(txtusuario);
-        v.validarNumeroLestrasArroba(txtemail);
     }
     private void txtdireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdireccionActionPerformed
         
@@ -604,7 +601,44 @@ private  void llenar(){
         txtfnac.setText("");
         txttipo.setText("");
         txtsalario.setText("");
-        txtusuario.setText("");
+    }
+    public void encriptar() {
+        //String invitado = "Cliente";
+
+        String pass = new String(txtcontra.getPassword());
+        String passCon = new String(txtconfirmar.getPassword());
+
+        if (txtusuario.getText().equals("") || txtemail.getText().equals("") || 
+                txtnombre.getText().equals("") || txtdireccion.getText().equals("") 
+                || txttelefono.getText().equals("") || 
+                txtdui.getText().equals("") || txtfnac.getText().equals("") || 
+                txttipo.getText().equals("") || txtsalario.getText().equals("") 
+                || pass.equals("") || passCon.equals("")) {
+
+            JOptionPane.showMessageDialog(null, "Hay campos vacios.!");
+
+        } else {
+            if (pass.equals(passCon)) {
+
+                DaoEmpleado ob2 = new DaoEmpleado();
+                if (ob2.existeUsuario(this.txtusuario.getText()) == 0) {
+
+                    String nuevoPass = hash.sha1(pass);
+
+                    ob.agregar(txtusuario.getText(), txtemail.getText(), txtcontra.getText(),
+                txtnombre.getText(),txtdireccion.getText(),
+                txttelefono.getText(), txtdui.getText(), txtfnac.getText(),
+                txttipo.getText(),txtsalario.getText());   
+                    llenar();
+
+                    Limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "El suario ya existe.!!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+            }
+        }
     }
     
 
