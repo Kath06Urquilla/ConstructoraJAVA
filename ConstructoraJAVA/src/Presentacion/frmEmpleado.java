@@ -9,7 +9,12 @@ import DAO.DaoEmpleado;
 import DAO.hash;
 import LogicaNegocio.TransaccionesEmpleado;
 import LogicaNegocio.Validaciones;
+import com.placeholder.PlaceHolder;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -18,6 +23,9 @@ import javax.swing.JOptionPane;
 public class frmEmpleado extends javax.swing.JPanel {
 TransaccionesEmpleado ob=new TransaccionesEmpleado();
 Validaciones v = new Validaciones();
+private TableRowSorter trsfiltro; //creamos el filtro
+        String filtro;
+        
     /**
      * Creates new form frmEmpleado
      */
@@ -26,8 +34,9 @@ Validaciones v = new Validaciones();
         llenar();
         btnaceptar.setEnabled(false);
         validaciones();
+        holders();
         txtidusuario.setVisible(false);
-        
+        txtidusuario.setFocusable(true);
     }
 private  void llenar(){
     tabla1.setModel(ob.mostrar());
@@ -45,9 +54,10 @@ private  void llenar(){
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        btnbuscar = new javax.swing.JButton();
+        txtbuscardato = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -106,36 +116,47 @@ private  void llenar(){
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bu.png"))); // NOI18N
-        btnbuscar.setText("Buscar");
+        txtbuscardato.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscardatoKeyReleased(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pdf.png"))); // NOI18N
         jButton1.setText("Reporte");
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bu.png"))); // NOI18N
+
+        jLabel16.setText("BUSCAR EMPLEADO:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtbuscardato, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(jLabel16)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtbuscardato))
                 .addContainerGap())
         );
 
@@ -167,10 +188,6 @@ private  void llenar(){
         jLabel13.setForeground(new java.awt.Color(255, 153, 51));
         jLabel13.setText("REGISTRARSE COMO EMPLEADO");
 
-        txtcontra.setText("jPasswordField1");
-
-        txtconfirmar.setText("jPasswordField1");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -180,7 +197,7 @@ private  void llenar(){
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtidusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel9))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -321,14 +338,13 @@ private  void llenar(){
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(66, 66, 66)
-                                .addComponent(jLabel5)
-                                .addGap(30, 30, 30)
-                                .addComponent(txtdui, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtfnac, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addComponent(jLabel5))
+                            .addComponent(jLabel6))
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfnac, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtdui, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
@@ -477,20 +493,19 @@ private  void llenar(){
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(350, 350, 350))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 842, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 94, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,12 +540,7 @@ private  void llenar(){
     }//GEN-LAST:event_txtsalarioActionPerformed
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
-        ob.modificar(txtusuario.getText(), txtemail.getText(), txtcontra.getText(),
-                Integer.parseInt(txtidusuario.getText()), 
-                txtnombre.getText(),txtdireccion.getText(),
-                txttelefono.getText(), txtdui.getText(), txtfnac.getText(),
-                txttipo.getText(),txtsalario.getText(), Integer.parseInt(txtid.getText()));
-       llenar();
+        encriptarModificar();
        Limpiar();
        btnaceptar.setEnabled(false);
     }//GEN-LAST:event_btnmodificarActionPerformed
@@ -547,6 +557,7 @@ private  void llenar(){
        txtusuario.setText(tabla1.getValueAt(f, 1).toString());
        txtemail.setText(tabla1.getValueAt(f, 2).toString());
        txtcontra.setText(tabla1.getValueAt(f, 3).toString());
+       txtconfirmar.setText(tabla1.getValueAt(f, 3).toString());
         txtid.setText(tabla1.getValueAt(f, 4).toString());
         txtnombre.setText(tabla1.getValueAt(f, 5).toString());
         txtdireccion.setText(tabla1.getValueAt(f, 6).toString());
@@ -587,6 +598,22 @@ private  void llenar(){
     private void txtduiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtduiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtduiActionPerformed
+
+    private void txtbuscardatoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscardatoKeyReleased
+        txtbuscardato.addKeyListener(new KeyAdapter() {
+            public void keyReleased(final KeyEvent e) {
+                filtro();
+            }
+        });
+        trsfiltro = new TableRowSorter(ob.mostrar());
+        tabla1.setRowSorter(trsfiltro);
+    }//GEN-LAST:event_txtbuscardatoKeyReleased
+     public void filtro() {
+        //Obtiene el valor del JTextField para el filtro
+        String filtro = txtbuscardato.getText();
+    
+    trsfiltro.setRowFilter(RowFilter.regexFilter("(?i)"+txtbuscardato.getText(),0,1));
+}
     void Limpiar()
     {
         txtidusuario.setText("");
@@ -602,6 +629,7 @@ private  void llenar(){
         txttipo.setText("");
         txtsalario.setText("");
     }
+    
     public void encriptar() {
         //String invitado = "Cliente";
 
@@ -625,7 +653,7 @@ private  void llenar(){
 
                     String nuevoPass = hash.sha1(pass);
 
-                    ob.agregar(txtusuario.getText(), txtemail.getText(), txtcontra.getText(),
+                    ob.agregar(txtusuario.getText(), txtemail.getText(), nuevoPass,
                 txtnombre.getText(),txtdireccion.getText(),
                 txttelefono.getText(), txtdui.getText(), txtfnac.getText(),
                 txttipo.getText(),txtsalario.getText());   
@@ -633,18 +661,60 @@ private  void llenar(){
 
                     Limpiar();
                 } else {
-                    JOptionPane.showMessageDialog(null, "El suario ya existe.!!");
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe.!!");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
             }
         }
     }
+     public void encriptarModificar() {
+        //String invitado = "Cliente";
+
+        String pass = new String(txtcontra.getPassword());
+        String passCon = new String(txtconfirmar.getPassword());
+
+        if (txtusuario.getText().equals("") || txtemail.getText().equals("") || 
+                txtnombre.getText().equals("") || txtdireccion.getText().equals("") 
+                || txttelefono.getText().equals("") || 
+                txtdui.getText().equals("") || txtfnac.getText().equals("") || 
+                txttipo.getText().equals("") || txtsalario.getText().equals("") 
+                || pass.equals("") || passCon.equals("")) {
+
+            JOptionPane.showMessageDialog(null, "Hay campos vacios.!");
+
+        } else {
+            if (pass.equals(passCon)) {
+
+                DaoEmpleado ob2 = new DaoEmpleado();
+             //   if (ob2.existeUsuario(this.txtusuario.getText()) == 0) {
+
+                    String nuevoPass = hash.sha1(pass);
+
+                    ob.modificar(txtusuario.getText(), txtemail.getText(), nuevoPass,
+                Integer.parseInt(txtidusuario.getText()), 
+                txtnombre.getText(),txtdireccion.getText(),
+                txttelefono.getText(), txtdui.getText(), txtfnac.getText(),
+                txttipo.getText(),txtsalario.getText(), Integer.parseInt(txtid.getText()));
+       llenar();
+
+                    Limpiar();
+                /*} else {
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe.!!");
+                }*/
+            } else {
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+            }
+        }
+    }
+    public void holders(){
+        PlaceHolder holder;
+        holder=new PlaceHolder(txtbuscardato,"Buscar empleado por nombre");
+    } 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnaceptar;
-    private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnmodificar;
     private javax.swing.JButton btnnuevo;
@@ -655,6 +725,8 @@ private  void llenar(){
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -668,9 +740,9 @@ private  void llenar(){
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tabla1;
+    private javax.swing.JTextField txtbuscardato;
     private javax.swing.JPasswordField txtconfirmar;
     private javax.swing.JPasswordField txtcontra;
     private javax.swing.JTextField txtdireccion;
