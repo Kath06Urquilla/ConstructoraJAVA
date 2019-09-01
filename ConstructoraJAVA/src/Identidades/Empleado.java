@@ -61,6 +61,10 @@ public class Empleado {
         this.estado = estado;
     }
 
+    public Empleado(String usuario, String correo, String contraseña, String avatar, String nombre, String direccion, String telefono, String dui, String fechaNacimiento, String tipoEmpleado, double parseDouble) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getIdUsuario() {
         return idUsuario;
     }
