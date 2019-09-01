@@ -14,7 +14,6 @@ public class Cliente {
     private String usuario;
     private String correo;
     private String contraseña;
-    private String avatar;
     private String nombre;
     private String direccion;
     private String telefono;
@@ -26,11 +25,10 @@ public class Cliente {
     }
 
     //Constructor para agregar
-    public Cliente(String usuario, String correo, String contraseña, String avatar, String nombre, String direccion, String telefono, String dui, String fechaNacimiento) {
+    public Cliente(String usuario, String correo, String contraseña, String nombre, String direccion, String telefono, String dui, String fechaNacimiento) {
         this.usuario = usuario;
         this.correo = correo;
         this.contraseña = contraseña;
-        this.avatar = avatar;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -69,14 +67,6 @@ public class Cliente {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 
     public String getNombre() {

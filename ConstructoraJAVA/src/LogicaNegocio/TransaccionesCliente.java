@@ -19,11 +19,11 @@ public class TransaccionesCliente {
     
     
     //Para agregar clientes
-    public void agregar(String usuario, String correo, String contraseña, String avatar, 
+    public void agregar(String usuario, String correo, String contraseña, 
             String nombre, String direccion, String telefono, String dui, String fechaNacimiento){
     
         try {
-            c = new Cliente(usuario, correo, contraseña, avatar, nombre, direccion, telefono, dui, fechaNacimiento);
+            c = new Cliente(usuario, correo, contraseña, nombre, direccion, telefono, dui, fechaNacimiento);
             res = ob.agregarCliente(c);
             
             if(res>0){
