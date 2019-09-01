@@ -67,11 +67,13 @@ public class TransaccionesEmpleado {
         }
     }
     
-    public void modificar(int idEmpleado,String nombre,String direccion, String telefono, String dui,
-            String fechaNacimiento, String tipoEmpleado, String pagoDia, String idUsuario){
-       /*try {
-            em=new Empleado(idEmpleado, nombre,direccion, telefono, dui, fechaNacimiento, 
-                    tipoEmpleado, Double.parseDouble(pagoDia),idUsuario);
+    public void modificar(String usuario, String correo, String contraseña, 
+            String avatar, int idUsuario,String nombre,String direccion, String telefono, String dui,
+            String fechaNacimiento, String tipoEmpleado, String pagoDia, int idEmpleado){
+       try {
+            em=new Empleado(usuario, correo, contraseña, avatar, idUsuario, 
+                    nombre,direccion, telefono, dui, fechaNacimiento, 
+                    tipoEmpleado, Double.parseDouble(pagoDia),idEmpleado);
             res=ob.modificarEmpleado(em);
             if(res>0)
                 JOptionPane.showMessageDialog(null, "Registro modificado correctamente");
@@ -79,12 +81,14 @@ public class TransaccionesEmpleado {
                 JOptionPane.showMessageDialog(null, "Registro no se pudo modificar");
             
         } catch (Exception e) {
-        }*/
+        }
     }
     
-    public void eliminar(int idEmpleado){
-       /* try {
+    public void eliminar(int idEmpleado, int idUsuario){
+        try {
              em=new Empleado(idEmpleado);
+             res=ob.eliminarEmpleado(em);
+             em=new Empleado(idUsuario);
              res=ob.eliminarEmpleado(em);
             if(res>0)
                 JOptionPane.showMessageDialog(null, "Registro eliminado con éxito");
@@ -92,6 +96,6 @@ public class TransaccionesEmpleado {
                 JOptionPane.showMessageDialog(null, "Registro no eliminado");
             
         } catch (Exception e) {
-        }*/
+        }
     }
 }
