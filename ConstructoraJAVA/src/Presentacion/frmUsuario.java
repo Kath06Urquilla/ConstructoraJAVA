@@ -15,7 +15,7 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author Alexis
+ * @author Alexis Aguilar
  */
 public class frmUsuario extends javax.swing.JPanel {
 
@@ -108,8 +108,7 @@ public class frmUsuario extends javax.swing.JPanel {
 
     public void filtro() {
         //Obtiene el valor del JTextField para el filtro
-        String filtro = txtbuscardato.getText();
-    
+        String filtro = txtbuscardato.getText();    
         trsfiltro.setRowFilter(RowFilter.regexFilter("(?i)"+txtbuscardato.getText(),0,1,2,3));
 }
     
