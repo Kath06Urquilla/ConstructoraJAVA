@@ -38,6 +38,8 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         
         this.mod = mod;
+        lblUsuario.setText(mod.getUsuario());
+        lblRol.setText(mod.getRol());
         
         if("Administrador".equals(mod.getRol())){
             llenado();
@@ -92,6 +94,13 @@ public class Principal extends javax.swing.JFrame {
         ifempleado = new javax.swing.JInternalFrame();
         ifmateriales = new javax.swing.JInternalFrame();
         ifusuarios = new javax.swing.JInternalFrame();
+        jPanel1 = new javax.swing.JPanel();
+        lblus = new javax.swing.JLabel();
+        lbl = new javax.swing.JLabel();
+        lblRol = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -122,7 +131,7 @@ public class Principal extends javax.swing.JFrame {
         );
 
         desktopPane.add(ifempleado);
-        ifempleado.setBounds(0, 0, 880, 600);
+        ifempleado.setBounds(0, 60, 880, 620);
 
         ifmateriales.setClosable(true);
         ifmateriales.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -142,7 +151,7 @@ public class Principal extends javax.swing.JFrame {
         );
 
         desktopPane.add(ifmateriales);
-        ifmateriales.setBounds(0, 0, 880, 600);
+        ifmateriales.setBounds(0, 60, 880, 620);
 
         ifusuarios.setClosable(true);
         ifusuarios.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -162,7 +171,33 @@ public class Principal extends javax.swing.JFrame {
         );
 
         desktopPane.add(ifusuarios);
-        ifusuarios.setBounds(0, 0, 880, 600);
+        ifusuarios.setBounds(0, 60, 880, 620);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblus.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblus.setText("Tipo de Usuario:");
+        jPanel1.add(lblus, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, -1, -1));
+
+        lbl.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl.setText("Usuario:");
+        jPanel1.add(lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+
+        lblRol.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jPanel1.add(lblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, 310, 30));
+
+        lblUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clave.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 40, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/em1.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 50));
+
+        desktopPane.add(jPanel1);
+        jPanel1.setBounds(0, 0, 1400, 60);
 
         fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ca.png"))); // NOI18N
         fileMenu.setMnemonic('f');
@@ -338,7 +373,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JInternalFrame ifempleado;
     private javax.swing.JInternalFrame ifmateriales;
     private javax.swing.JInternalFrame ifusuarios;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl;
+    private javax.swing.JLabel lblRol;
+    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblus;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
