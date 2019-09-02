@@ -32,6 +32,17 @@ public class Validaciones {
            }
        });
     }
+     
+     public void validarSoloLetrasEspacioNumero(JTextField campo){
+        campo.addKeyListener(new KeyAdapter(){
+           public void keyTyped(KeyEvent e){
+               Character c=e.getKeyChar();
+               if(!Character.isLetter(c) && c!=KeyEvent.VK_SPACE && !Character.isDigit(c)){
+                   e.consume();
+               }
+           }
+       });
+    }
  
     public void validarSoloNumeros(JTextField campo){
         campo.addKeyListener(new KeyAdapter(){
@@ -74,7 +85,7 @@ public class Validaciones {
         campo.addKeyListener(new KeyAdapter(){
             public void keyTyped(KeyEvent e){
                 Character c = e.getKeyChar();
-                if(!Character.isDigit(c) && !Character.isLetter(c) && c!='@'){
+                if(!Character.isDigit(c) && !Character.isLetter(c) && c!='@' && c!='-' && c!='.' && c!='_'){
                     e.consume();
                 }
                 /*if(c=='.' && JTextField.getText().contains("."))

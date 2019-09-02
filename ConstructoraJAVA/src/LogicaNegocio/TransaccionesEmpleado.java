@@ -71,7 +71,7 @@ public class TransaccionesEmpleado {
              int idUsuario,String nombre,String direccion, String telefono, String dui,
             String fechaNacimiento, String tipoEmpleado, String pagoDia, int idEmpleado){
        try {
-            em=new Empleado(idUsuario, usuario, correo, contraseña, tipoEmpleado1, idEmpleado, nombre, direccion, telefono, dui, fechaNacimiento, tipoEmpleado, res, res);
+            em=new Empleado(idUsuario, usuario, correo, contraseña, tipoEmpleado1, idEmpleado, nombre, direccion, telefono, dui, fechaNacimiento, tipoEmpleado, Double.parseDouble(pagoDia));
             res=ob.modificarEmpleado(em);
             if(res>0)
                 JOptionPane.showMessageDialog(null, "Registro modificado correctamente");
