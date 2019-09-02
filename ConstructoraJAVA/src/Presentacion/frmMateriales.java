@@ -41,7 +41,8 @@ public class frmMateriales extends javax.swing.JPanel {
         initComponents();
         llenar();
         jPanel1.setVisible(false);
-        holders();  
+        holders(); 
+        txtNombre.setFocusable(true);
     }
 
     /**
@@ -470,7 +471,6 @@ public class frmMateriales extends javax.swing.JPanel {
         // TODO add your handling code here:
         int f=jTable1.getSelectedRow();
         txtID_Material.setText(jTable1.getValueAt(f, 0).toString());
-        txtBuscarDato.setText(jTable1.getValueAt(f, 0).toString());
         txtNombre.setText(jTable1.getValueAt(f, 1).toString());
         txtPrecio.setText(jTable1.getValueAt(f, 2).toString());
         txtExistencias.setText(jTable1.getValueAt(f, 3).toString());
@@ -506,7 +506,7 @@ public class frmMateriales extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             Map parametro = new HashMap();
-            parametro.put("parameter1", txtBuscarDato.getText());
+            parametro.put("parameter1", txtID_Material.getText());
             
             InputStream archivo = getClass().getResourceAsStream("/Reportes/rm1_1.jrxml");
             JasperDesign jd = JRXmlLoader.load(archivo);

@@ -5,11 +5,21 @@
  */
 package Presentacion;
 
+import DAO.Conexion;
 import Identidades.Cliente;
 import java.awt.Color;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -25,6 +35,7 @@ public class Principal extends javax.swing.JFrame {
     frmEmpleado frme = new frmEmpleado();
     frmMateriales frmmate = new frmMateriales();
     frmMaquinaria frma = new frmMaquinaria();
+    Conexion c=new Conexion();
    // frmMaterailes frmmate = new frmMaterailes();
     public Principal() throws ClassNotFoundException, SQLException {
         initComponents();
@@ -158,6 +169,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        openMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         openMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/em1.png"))); // NOI18N
         openMenuItem.setMnemonic('o');
         openMenuItem.setText("Empleado");
@@ -168,6 +180,7 @@ public class Principal extends javax.swing.JFrame {
         });
         fileMenu.add(openMenuItem);
 
+        saveMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         saveMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maquinaria1.fw.png"))); // NOI18N
         saveMenuItem.setMnemonic('s');
         saveMenuItem.setText("Maquinaria");
@@ -178,6 +191,7 @@ public class Principal extends javax.swing.JFrame {
         });
         fileMenu.add(saveMenuItem);
 
+        saveAsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         saveAsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/materiales1.png"))); // NOI18N
         saveAsMenuItem.setMnemonic('a');
         saveAsMenuItem.setText("Materiales");
@@ -188,6 +202,7 @@ public class Principal extends javax.swing.JFrame {
         });
         fileMenu.add(saveAsMenuItem);
 
+        exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -204,8 +219,14 @@ public class Principal extends javax.swing.JFrame {
         editMenu.setMnemonic('e');
         editMenu.setText("Reportes");
 
+        deleteMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
+        deleteMenuItem.setText("Usuarios");
+        deleteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(deleteMenuItem);
 
         menuBar.add(editMenu);
@@ -250,6 +271,20 @@ public class Principal extends javax.swing.JFrame {
     private void fileMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fileMenuMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_fileMenuMouseClicked
+
+    private void deleteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuItemActionPerformed
+        try {
+            InputStream archivo = getClass().getResourceAsStream("/Reportes/rusuarios.jrxml");
+            JasperDesign jd = JRXmlLoader.load(archivo);
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, c.con());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true); 
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_deleteMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

@@ -44,7 +44,7 @@
                       </Group>
                   </Group>
                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Component id="jPanel1" alignment="0" min="-2" pref="462" max="-2" attributes="0"/>
+                      <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" alignment="1" min="-2" pref="667" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -150,8 +150,8 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txt_existencia" max="32767" attributes="0"/>
-                                      <Component id="txt_marca" pref="108" max="32767" attributes="0"/>
+                                      <Component id="txt_existencia" pref="96" max="32767" attributes="0"/>
+                                      <Component id="txt_marca" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -168,7 +168,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="15" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -335,6 +335,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Generar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
@@ -425,6 +428,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Reporte de maquinaria"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

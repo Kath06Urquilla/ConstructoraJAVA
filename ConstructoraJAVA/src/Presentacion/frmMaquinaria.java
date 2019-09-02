@@ -4,12 +4,28 @@
  * and open the template in the editor.
  */
 package Presentacion;
+import DAO.Conexion;
 import LogicaNegocio.TransaccionesMaquinaria;
+import LogicaNegocio.Validaciones;
+import com.placeholder.PlaceHolder;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.InputStream;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -17,6 +33,8 @@ import javax.swing.table.TableRowSorter;
  */
 public class frmMaquinaria extends javax.swing.JPanel {
     TransaccionesMaquinaria obj= new TransaccionesMaquinaria();
+    Validaciones v = new Validaciones();
+    Conexion c = new Conexion();
     DefaultListModel modelo= new DefaultListModel();
     private TableRowSorter trsfiltro; //creamos el filtro
         String filtro;
@@ -27,8 +45,18 @@ public class frmMaquinaria extends javax.swing.JPanel {
         initComponents();
         llenar();
         cargar();
+        validaciones();
+        holders();
+        txt_nombre.setFocusable(true);
        // jPanel1.setVisible(false);
         
+    }
+    void validaciones()
+    {
+        v.validarSoloLetrasEspacio(txt_nombre);
+        v.validarSoloNumeros(txt_existencia);
+        v.validarSoloLetrasEspacio(txt_marca);
+        v.validarSoloNumerosPunto(txt_precio);
     }
      private void llenar(){
       jTable1.setModel(obj.mostrar());
@@ -39,6 +67,11 @@ public class frmMaquinaria extends javax.swing.JPanel {
     
     trsfiltro.setRowFilter(RowFilter.regexFilter("(?i)"+txt_buscar.getText(),0,1));
     }
+     public void holders(){
+        PlaceHolder holder;
+        holder=new PlaceHolder(txt_buscar,"Buscar empleado por nombre o código");
+    } 
+    
 
      
     /**
@@ -140,8 +173,8 @@ public class frmMaquinaria extends javax.swing.JPanel {
                                     .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_existencia)
-                                    .addComponent(txt_marca, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)))))
+                                    .addComponent(txt_existencia, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                                    .addComponent(txt_marca)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -150,7 +183,7 @@ public class frmMaquinaria extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cmbtipomaq, 0, 126, Short.MAX_VALUE)
                             .addComponent(txt_precio))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,6 +247,11 @@ public class frmMaquinaria extends javax.swing.JPanel {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pdf.png"))); // NOI18N
         jButton2.setText("Generar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -248,6 +286,11 @@ public class frmMaquinaria extends javax.swing.JPanel {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pdf.png"))); // NOI18N
         jButton3.setText("Reporte de maquinaria");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -303,7 +346,7 @@ public class frmMaquinaria extends javax.swing.JPanel {
                             .addGap(498, 498, 498)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -373,10 +416,11 @@ public class frmMaquinaria extends javax.swing.JPanel {
         // TODO add your handling code here:
         txt_id.setText("");
         txt_nombre.setText("");
-        cmbtipomaq.setSelectedItem(0);
+        cmbtipomaq.setSelectedIndex(0);
         txt_marca.setText("");
         txt_precio.setText("");
         txt_existencia.setText("");
+        txt_buscar.setText("");
         jPanel1.setVisible(true);
     }//GEN-LAST:event_btn_nuevoActionPerformed
 
@@ -390,6 +434,36 @@ public class frmMaquinaria extends javax.swing.JPanel {
         trsfiltro = new TableRowSorter(obj.mostrar());
         jTable1.setRowSorter(trsfiltro);
     }//GEN-LAST:event_txt_buscarKeyReleased
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            InputStream archivo = getClass().getResourceAsStream("/Reportes/rmaquinaria.jrxml");
+            JasperDesign jd = JRXmlLoader.load(archivo);
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, c.con());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true); 
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            Map parametro = new HashMap();
+            parametro.put("parameter1", txt_id.getText());
+            
+            InputStream archivo = getClass().getResourceAsStream("/Reportes/rmaquinariap.jrxml");
+            JasperDesign jd = JRXmlLoader.load(archivo);
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametro, c.con());           
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (ClassNotFoundException | SQLException | JRException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 void cargar()
 {
     cmbtipomaq.addItem("Liviana");
