@@ -52,11 +52,13 @@ public class DaoEmpleado extends Conexion implements CrudEmpleado{
     @Override
     public int agregarEmpleado(Empleado em) throws ClassNotFoundException, SQLException {
         try {
+            
             ps = super.con().prepareStatement("INSERT INTO usuario(usuario, correo,"
-                    + " contraseña, rol) VALUES (?,?,?,'Empleado')");
+                    + " contraseña, rol) VALUES (?,?,?,?)");
             ps.setString(1, em.getUsuario());
             ps.setString(2, em.getCorreo());
             ps.setString(3, em.getContraseña());
+            ps.setString(4, em.getTipoEmpleado1());
             res = ps.executeUpdate();
             
             ps=super.con().prepareStatement("insert into empleado(nombre, direccion,"
@@ -83,12 +85,14 @@ public class DaoEmpleado extends Conexion implements CrudEmpleado{
     public int modificarEmpleado(Empleado em) throws ClassNotFoundException, SQLException {
         try {
             ps = super.con().prepareStatement("update usuario set usuario=?, correo=?,"
-                    + " contraseña=?, rol='Empleado' where idUsuario=?");
+                    + " contraseña=?, rol=? where idUsuario=?");
             ps.setString(1, em.getUsuario());
             ps.setString(2, em.getCorreo());
             ps.setString(3, em.getContraseña());
-            ps.setInt(4, em.getIdUsuario());
+            ps.setString(4, em.getTipoEmpleado1());
+            ps.setInt(5, em.getIdUsuario());
             res = ps.executeUpdate();
+            
             
             ps=super.con().prepareStatement("update empleado set nombre=?, direccion=?,"
                     + " telefono=?, dui=?,fechaNacimiento=?, tipoEmpleado=?,pagoDia=? where idEmpleado=?");
