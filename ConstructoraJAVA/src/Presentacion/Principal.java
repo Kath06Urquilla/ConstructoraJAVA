@@ -24,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
      */
     frmEmpleado frme = new frmEmpleado();
     frmMateriales frmmate = new frmMateriales();
+    frmMaquinaria frma = new frmMaquinaria();
    // frmMaterailes frmmate = new frmMaterailes();
     public Principal() throws ClassNotFoundException, SQLException {
         initComponents();
@@ -48,6 +49,7 @@ public class Principal extends javax.swing.JFrame {
                 this.setExtendedState(Principal.MAXIMIZED_BOTH);
                 ifempleado.setContentPane(frme);
                 ifmateriales.setContentPane(frmmate);
+                ifmaquinaria.setContentPane(frma);
                 
             } catch (Exception e) {
             }
@@ -75,6 +77,7 @@ public class Principal extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         ifempleado = new javax.swing.JInternalFrame();
         ifmateriales = new javax.swing.JInternalFrame();
+        ifmaquinaria = new javax.swing.JInternalFrame();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -125,6 +128,26 @@ public class Principal extends javax.swing.JFrame {
 
         desktopPane.add(ifmateriales);
         ifmateriales.setBounds(10, 10, 780, 550);
+
+        ifmaquinaria.setClosable(true);
+        ifmaquinaria.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        ifmaquinaria.setIconifiable(true);
+        ifmaquinaria.setMaximizable(true);
+        ifmaquinaria.setVisible(false);
+
+        javax.swing.GroupLayout ifmaquinariaLayout = new javax.swing.GroupLayout(ifmaquinaria.getContentPane());
+        ifmaquinaria.getContentPane().setLayout(ifmaquinariaLayout);
+        ifmaquinariaLayout.setHorizontalGroup(
+            ifmaquinariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        ifmaquinariaLayout.setVerticalGroup(
+            ifmaquinariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        desktopPane.add(ifmaquinaria);
+        ifmaquinaria.setBounds(10, 10, 710, 500);
 
         fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ca.png"))); // NOI18N
         fileMenu.setMnemonic('f');
@@ -217,7 +240,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
-        // TODO add your handling code here:
+        ifmaquinaria.setVisible(true);
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
     private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
@@ -277,6 +300,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JInternalFrame ifempleado;
+    private javax.swing.JInternalFrame ifmaquinaria;
     private javax.swing.JInternalFrame ifmateriales;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
