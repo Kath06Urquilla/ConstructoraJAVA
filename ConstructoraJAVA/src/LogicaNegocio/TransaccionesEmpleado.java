@@ -49,11 +49,11 @@ public class TransaccionesEmpleado {
         }
         return tm;
     }
-    public void agregar(String usuario, String correo, String contraseña, 
+    public void agregar(String usuario, String correo, String contraseña, String tipoEmpleado1, 
             String nombre,String direccion, String telefono, String dui,
             String fechaNacimiento, String tipoEmpleado, String pagoDia){
         try {
-            em=new Empleado(usuario, correo, contraseña, nombre, direccion,
+            em=new Empleado(usuario, correo, contraseña, tipoEmpleado1, nombre, direccion,
                   telefono, dui, fechaNacimiento, tipoEmpleado, Double.parseDouble(pagoDia));
             res=ob.agregarEmpleado(em);
             
@@ -67,18 +67,17 @@ public class TransaccionesEmpleado {
         }
     }
     
-    public void modificar(String usuario, String correo, String contraseña, 
+    public void modificar(String usuario, String correo, String contraseña, String tipoEmpleado1, 
              int idUsuario,String nombre,String direccion, String telefono, String dui,
             String fechaNacimiento, String tipoEmpleado, String pagoDia, int idEmpleado){
        try {
-            em=new Empleado(usuario, correo, contraseña, idUsuario, 
-                    nombre,direccion, telefono, dui, fechaNacimiento, 
-                    tipoEmpleado, Double.parseDouble(pagoDia),idEmpleado);
+            em=new Empleado(idUsuario, usuario, correo, contraseña, tipoEmpleado1, idEmpleado, nombre, direccion, telefono, dui, fechaNacimiento, tipoEmpleado, res, res);
             res=ob.modificarEmpleado(em);
             if(res>0)
                 JOptionPane.showMessageDialog(null, "Registro modificado correctamente");
             else
                 JOptionPane.showMessageDialog(null, "Registro no se pudo modificar");
+            
             
         } catch (Exception e) {
         }

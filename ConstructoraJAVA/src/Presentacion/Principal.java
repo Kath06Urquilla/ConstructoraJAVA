@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,14 +23,15 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    
+   //instancia de todos los paneles
     frmEmpleado frme = new frmEmpleado();
     frmMateriales frmmate = new frmMateriales();
     frmUsuario frmusu = new frmUsuario();
-   // frmMaterailes frmmate = new frmMaterailes();
+   
+    
     public Principal() throws ClassNotFoundException, SQLException {
-        initComponents();
-        //IniciarPanel();        
-        
+        initComponents();              
     }
     
     public Principal(Cliente mod) throws ClassNotFoundException, SQLException{
@@ -37,33 +39,45 @@ public class Principal extends javax.swing.JFrame {
         
         this.mod = mod;
         
-        if("Cliente".equals(mod.getRol())){
+        if("Administrador".equals(mod.getRol())){
             llenado();
+        }else if("Director de proyectos".equals(mod.getRol())){
+            this.setExtendedState(Principal.MAXIMIZED_BOTH);
+            
+            editMenu.setVisible(false);
+            jMenuItem1.setVisible(false);
+            
+            ifempleado.setContentPane(frme);
+            ifmateriales.setContentPane(frmmate);
+            
+            frme.inhabilitar();
+            frmmate.inhabilitar();
+        
         }
     }
     
         void llenado(){
         
             try {
-                this.getContentPane().setBackground(Color.black);
+                //this.getContentPane().setBackground(Color.black);
                 this.setExtendedState(Principal.MAXIMIZED_BOTH);
                 ifempleado.setContentPane(frme);
                 ifmateriales.setContentPane(frmmate);
                 ifusuarios.setContentPane(frmusu);                
                 
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
             }
+        }
+        
+        void cerrarPaneles(){
+            ifempleado.dispose();
+            ifmateriales.dispose();
+            ifusuarios.dispose();        
         }
 
     
-    /*void IniciarPanel(){
-        //Color MDI
-    this.getContentPane().setBackground(Color.black);
-    this.setExtendedState(Principal.MAXIMIZED_BOTH);
-        ifempleado.setContentPane(frme);
-        ifmateriales.setContentPane(frmmate);
-      //  ifmateriales.setContentPane(frmmate);
-    }*/
+  
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,7 +122,7 @@ public class Principal extends javax.swing.JFrame {
         );
 
         desktopPane.add(ifempleado);
-        ifempleado.setBounds(10, 10, 880, 650);
+        ifempleado.setBounds(0, 0, 880, 600);
 
         ifmateriales.setClosable(true);
         ifmateriales.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -128,7 +142,7 @@ public class Principal extends javax.swing.JFrame {
         );
 
         desktopPane.add(ifmateriales);
-        ifmateriales.setBounds(10, 10, 780, 550);
+        ifmateriales.setBounds(0, 0, 880, 600);
 
         ifusuarios.setClosable(true);
         ifusuarios.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -148,7 +162,7 @@ public class Principal extends javax.swing.JFrame {
         );
 
         desktopPane.add(ifusuarios);
-        ifusuarios.setBounds(10, 10, 700, 500);
+        ifusuarios.setBounds(0, 0, 880, 600);
 
         fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ca.png"))); // NOI18N
         fileMenu.setMnemonic('f');
@@ -249,6 +263,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         ifempleado.setVisible(true);
+        ifmateriales.setVisible(false);
+        ifusuarios.setVisible(false);
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
@@ -256,7 +272,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
     private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
+        ifempleado.setVisible(false);
         ifmateriales.setVisible(true);
+        ifusuarios.setVisible(false);
     }//GEN-LAST:event_saveAsMenuItemActionPerformed
 
     private void fileMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fileMenuMouseClicked
@@ -264,6 +282,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_fileMenuMouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        ifempleado.setVisible(false);
+        ifmateriales.setVisible(false);
         ifusuarios.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
