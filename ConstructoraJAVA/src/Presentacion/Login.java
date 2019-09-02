@@ -7,7 +7,11 @@ package Presentacion;
 
 import DAO.hash;
 import DAO.DaoCliente;
+import com.placeholder.PlaceHolder;
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -18,10 +22,25 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+ 
     public Login() {
         initComponents();
         this.setLocationRelativeTo(this);
+        this.jLabel1.setFocusable(true);
+        holders();       
+                
     }
+    
+    public void holders(){
+        PlaceHolder holder;
+        holder=new PlaceHolder(txtUsuario,"Usuario");
+        holder=new PlaceHolder(txtContraseña,"******************");
+        Font fuente = new Font("Calibri",0,24);
+        txtUsuario.setFont(fuente); 
+        txtUsuario.setForeground(Color.GRAY);
+        txtContraseña.setFont(fuente); 
+        txtContraseña.setForeground(Color.GRAY);
+    } 
     
     public void iniciarSecion(){
         DaoCliente ob = new DaoCliente();
@@ -145,7 +164,6 @@ public class Login extends javax.swing.JFrame {
 
         txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(153, 153, 153));
-        txtUsuario.setText("Usuario");
         txtUsuario.setBorder(null);
         txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -157,12 +175,16 @@ public class Login extends javax.swing.JFrame {
 
         txtContraseña.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         txtContraseña.setForeground(new java.awt.Color(153, 153, 153));
-        txtContraseña.setText("jPasswordField1");
         txtContraseña.setBorder(null);
         txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtContraseñaMouseClicked(evt);
+            }
+        });
+        txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtContraseñaKeyPressed(evt);
             }
         });
         jPanel2.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 260, 40));
@@ -201,6 +223,11 @@ public class Login extends javax.swing.JFrame {
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
+            }
+        });
+        btnIniciar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnIniciarKeyPressed(evt);
             }
         });
         jPanel2.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 310, 40));
@@ -252,11 +279,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseDragged
 
     private void txtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseClicked
-        this.txtUsuario.setText("");
+        
     }//GEN-LAST:event_txtUsuarioMouseClicked
 
     private void txtContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContraseñaMouseClicked
-        this.txtContraseña.setText("");
+      
     }//GEN-LAST:event_txtContraseñaMouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -268,6 +295,14 @@ public class Login extends javax.swing.JFrame {
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
        iniciarSecion();
     }//GEN-LAST:event_btnIniciarActionPerformed
+
+    private void btnIniciarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIniciarKeyPressed
+        
+    }//GEN-LAST:event_btnIniciarKeyPressed
+
+    private void txtContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyPressed
+      
+    }//GEN-LAST:event_txtContraseñaKeyPressed
 
     /**
      * @param args the command line arguments
