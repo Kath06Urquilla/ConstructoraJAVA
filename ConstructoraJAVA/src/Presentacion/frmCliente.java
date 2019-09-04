@@ -3,6 +3,7 @@ package Presentacion;
 import DAO.DaoCliente;
 import DAO.hash;
 import LogicaNegocio.TransaccionesCliente;
+import LogicaNegocio.Validaciones;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,11 +16,23 @@ import javax.swing.JOptionPane;
 public class frmCliente extends javax.swing.JFrame {
     
     TransaccionesCliente ob = new TransaccionesCliente();
+    Validaciones va = new Validaciones();
 
     /** Creates new form frmCliente */
     public frmCliente() {
         initComponents();
+        validaciones();
         this.setLocationRelativeTo(this);
+    }
+    
+    public void validaciones(){        
+        va.validarSoloLetrasNumeros(txtUsuario);
+        va.validarNumeroLestrasArroba(txtCorreo);
+        va.validarSoloLetrasEspacio(txtNombre);
+        va.validarSoloNumeros(txtTelefono);
+        va.validarSoloNumeros(txtDui);
+        va.validarSoloNumeros(txtFechaNacimiento);
+        va.validarSoloLetrasEspacioNumero(txtDireccion);
     }
     
     public void limpiar(){
