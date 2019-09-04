@@ -5,12 +5,22 @@
  */
 package Presentacion;
 
+import DAO.Conexion;
 import LogicaNegocio.TransaccionesUsuario;
 import com.placeholder.PlaceHolder;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.InputStream;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 /**
@@ -21,6 +31,7 @@ public class frmUsuario extends javax.swing.JPanel {
 
     TransaccionesUsuario ob = new TransaccionesUsuario();
     private TableRowSorter trsfiltro; //creamos el filtro
+      Conexion c=new Conexion();
     String filtro;
     /**
      * Creates new form frmUsuario
@@ -94,6 +105,11 @@ public class frmUsuario extends javax.swing.JPanel {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pdf.png"))); // NOI18N
         jButton1.setText("Reporte");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 122, 34));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bu.png"))); // NOI18N
@@ -121,6 +137,20 @@ public class frmUsuario extends javax.swing.JPanel {
         trsfiltro = new TableRowSorter(ob.mostrar());
         jTable1.setRowSorter(trsfiltro);
     }//GEN-LAST:event_txtbuscardatoKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         try {
+            InputStream archivo = getClass().getResourceAsStream("/Reportes/rusuarios.jrxml");
+            JasperDesign jd = JRXmlLoader.load(archivo);
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, c.con());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true); 
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

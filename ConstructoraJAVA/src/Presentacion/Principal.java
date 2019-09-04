@@ -28,6 +28,7 @@ public class Principal extends javax.swing.JFrame {
     frmEmpleado frme = new frmEmpleado();
     frmMateriales frmmate = new frmMateriales();
     frmUsuario frmusu = new frmUsuario();
+    frmMaquinaria frmmaq = new frmMaquinaria();
    
     
     public Principal() throws ClassNotFoundException, SQLException {
@@ -46,14 +47,18 @@ public class Principal extends javax.swing.JFrame {
         }else if("Director de proyectos".equals(mod.getRol())){
             this.setExtendedState(Principal.MAXIMIZED_BOTH);
             
-            editMenu.setVisible(false);
+            //editMenu.setVisible(false);
             jMenuItem1.setVisible(false);
             
             ifempleado.setContentPane(frme);
             ifmateriales.setContentPane(frmmate);
+            ifmaquinaria.setContentPane(frmmaq);
+            
+            
             
             frme.inhabilitar();
             frmmate.inhabilitar();
+            frmmaq.inhabilitar();
         
         }
     }
@@ -65,20 +70,14 @@ public class Principal extends javax.swing.JFrame {
                 this.setExtendedState(Principal.MAXIMIZED_BOTH);
                 ifempleado.setContentPane(frme);
                 ifmateriales.setContentPane(frmmate);
-                ifusuarios.setContentPane(frmusu);                
+                ifusuarios.setContentPane(frmusu);    
+                ifmaquinaria.setContentPane(frmmaq);
                 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
         }
-        
-        void cerrarPaneles(){
-            ifempleado.dispose();
-            ifmateriales.dispose();
-            ifusuarios.dispose();        
-        }
-
-    
+      
   
     
     /**
@@ -101,6 +100,7 @@ public class Principal extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        ifmaquinaria = new javax.swing.JInternalFrame();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -108,8 +108,6 @@ public class Principal extends javax.swing.JFrame {
         saveAsMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        deleteMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,6 +197,22 @@ public class Principal extends javax.swing.JFrame {
         desktopPane.add(jPanel1);
         jPanel1.setBounds(0, 0, 1400, 60);
 
+        ifmaquinaria.setVisible(false);
+
+        javax.swing.GroupLayout ifmaquinariaLayout = new javax.swing.GroupLayout(ifmaquinaria.getContentPane());
+        ifmaquinaria.getContentPane().setLayout(ifmaquinariaLayout);
+        ifmaquinariaLayout.setHorizontalGroup(
+            ifmaquinariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        ifmaquinariaLayout.setVerticalGroup(
+            ifmaquinariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        desktopPane.add(ifmaquinaria);
+        ifmaquinaria.setBounds(0, 60, 880, 620);
+
         fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ca.png"))); // NOI18N
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
@@ -208,6 +222,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        openMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         openMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/em1.png"))); // NOI18N
         openMenuItem.setMnemonic('o');
         openMenuItem.setText("Empleado");
@@ -218,6 +233,7 @@ public class Principal extends javax.swing.JFrame {
         });
         fileMenu.add(openMenuItem);
 
+        saveMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         saveMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maquinaria1.fw.png"))); // NOI18N
         saveMenuItem.setMnemonic('s');
         saveMenuItem.setText("Maquinaria");
@@ -228,6 +244,7 @@ public class Principal extends javax.swing.JFrame {
         });
         fileMenu.add(saveMenuItem);
 
+        saveAsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         saveAsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/materiales1.png"))); // NOI18N
         saveAsMenuItem.setMnemonic('a');
         saveAsMenuItem.setText("Materiales");
@@ -238,6 +255,7 @@ public class Principal extends javax.swing.JFrame {
         });
         fileMenu.add(saveAsMenuItem);
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
         jMenuItem1.setText("Usuarios");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -258,16 +276,6 @@ public class Principal extends javax.swing.JFrame {
         fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
-
-        editMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pdf.png"))); // NOI18N
-        editMenu.setMnemonic('e');
-        editMenu.setText("Reportes");
-
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
-
-        menuBar.add(editMenu);
 
         setJMenuBar(menuBar);
 
@@ -300,16 +308,21 @@ public class Principal extends javax.swing.JFrame {
         ifempleado.setVisible(true);
         ifmateriales.setVisible(false);
         ifusuarios.setVisible(false);
+        ifmaquinaria.setVisible(false);
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
-        // TODO add your handling code here:
+         ifempleado.setVisible(false);
+        ifmateriales.setVisible(false);
+        ifusuarios.setVisible(false);
+        ifmaquinaria.setVisible(true);
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
     private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
         ifempleado.setVisible(false);
         ifmateriales.setVisible(true);
         ifusuarios.setVisible(false);
+        ifmaquinaria.setVisible(false);
     }//GEN-LAST:event_saveAsMenuItemActionPerformed
 
     private void fileMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fileMenuMouseClicked
@@ -320,6 +333,7 @@ public class Principal extends javax.swing.JFrame {
         ifempleado.setVisible(false);
         ifmateriales.setVisible(false);
         ifusuarios.setVisible(true);
+        ifmaquinaria.setVisible(false);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
@@ -365,12 +379,11 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JInternalFrame ifempleado;
+    private javax.swing.JInternalFrame ifmaquinaria;
     private javax.swing.JInternalFrame ifmateriales;
     private javax.swing.JInternalFrame ifusuarios;
     private javax.swing.JLabel jLabel1;

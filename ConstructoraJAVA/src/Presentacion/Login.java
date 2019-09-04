@@ -7,6 +7,7 @@ package Presentacion;
 
 import DAO.hash;
 import DAO.DaoCliente;
+import LogicaNegocio.Validaciones;
 import com.placeholder.PlaceHolder;
 import java.awt.Color;
 import java.awt.Font;
@@ -18,6 +19,8 @@ import javax.swing.JOptionPane;
  * @author Alexis
  */
 public class Login extends javax.swing.JFrame {
+    
+     Validaciones va = new Validaciones();
 
     /**
      * Creates new form Login
@@ -27,8 +30,13 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(this);
         this.jLabel1.setFocusable(true);
-        holders();       
+        holders();    
+        validaciones();
                 
+    }
+    
+     public void validaciones(){        
+       va.validarSoloLetrasNumeros(txtUsuario);
     }
     
     public void holders(){
